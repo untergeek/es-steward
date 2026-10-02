@@ -20,11 +20,12 @@ Selectors live in `es_tools.select`. Predicates and `promote --dry-run` are S1. 
 
 ```bash
 uv sync --extra tui --extra dev
-uv run es-steward tui --help
-uv run es-steward tui show --prefix logs-
 ```
 
-Missing flags are prompted (forms). TUI subcommands: `show`, `promote`, `redact`, `journal`. Other mutations are CLI / HTTP only.
+`es-steward tui` takes no arguments.
+The screen shows the text hello. Binding q quits.
+Screens named workshop, show, and journal are registered and are not opened.
+There is no promote screen and no redact screen.
 
 ## API
 
@@ -48,6 +49,6 @@ uv sync --extra mcp --extra dev
 uv run es-steward-mcp
 ```
 
-Requires **`mcp>=2.1`** (`MCPServer`; FastMCP is 1.x and is gone). Tools: `steward_show`,
-`steward_journal`, `steward_promote_dry_run` (always dry-run), `steward_redact` (`execute`
-defaults false). Empty selection and bad arguments raise MCP `ToolError` with the message.
+Requires **`mcp>=2.1`** (`MCPServer`; FastMCP is 1.x and is gone). Empty selection and bad arguments raise MCP `ToolError` with the message.
+The MCP server registers 24 tools. Each tool calls the HTTP API. The API must already be running.
+If either STEWARD_API_URL or STEWARD_API_TOKEN is unset, the tool call fails with an error that names both variables.
