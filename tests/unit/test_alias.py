@@ -6,7 +6,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from click.testing import CliRunner
-from es_tools.select import PatternFilter
+from es_mgmt.select import PatternFilter
 
 from es_steward.cli import main
 from es_steward.services import NoIndicesError, run_alias

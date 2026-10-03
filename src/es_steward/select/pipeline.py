@@ -1,10 +1,10 @@
-"""Resolve selectors (es_tools) then Steward predicates."""
+"""Resolve selectors (es_mgmt) then Steward predicates."""
 
 from __future__ import annotations
 
 from typing import Any
 
-from es_tools.select import SelectContext, Selector, apply_filters
+from es_mgmt.select import SelectContext, Selector, apply_filters
 
 from es_steward import JOURNAL
 

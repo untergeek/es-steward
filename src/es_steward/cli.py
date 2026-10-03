@@ -485,7 +485,7 @@ def alias_cmd(
     extra_settings: str | None,
 ) -> None:
     """Add and/or remove matching indices on one alias."""
-    from es_tools.select import PatternFilter
+    from es_mgmt.select import PatternFilter
 
     if not add_prefix and not remove_prefix:
         raise click.ClickException("need --add-prefix and/or --remove-prefix")

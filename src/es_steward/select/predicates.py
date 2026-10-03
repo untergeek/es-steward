@@ -5,8 +5,8 @@ from __future__ import annotations
 from collections.abc import Callable
 from typing import Any
 
-from es_tools.select import SelectContext
-from es_tools.utils.chunk import chunk_names
+from es_mgmt.select import SelectContext
+from es_mgmt.utils.chunk import chunk_names
 
 from .dates import (
     absolute_range,

@@ -5,11 +5,11 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from typing import Any
 
-from es_tools.checkpoint.action_run import ActionRun
-from es_tools.checkpoint.event_bus import EventBus
-from es_tools.client.cli import get_client
-from es_tools.cluster import SetClusterRouting
-from es_tools.index import (
+from es_mgmt.checkpoint.action_run import ActionRun
+from es_mgmt.checkpoint.event_bus import EventBus
+from es_mgmt.client.cli import get_client
+from es_mgmt.cluster import SetClusterRouting
+from es_mgmt.index import (
     CloseIndices,
     Cold2FrozenIndices,
     CreateIndices,
@@ -25,9 +25,9 @@ from es_tools.index import (
     ShrinkIndices,
     UpdateAliases,
 )
-from es_tools.redact import RedactFields
-from es_tools.select import PatternFilter, SelectContext
-from es_tools.snapshot import CreateSnapshot, DeleteSnapshots, RestoreSnapshot
+from es_mgmt.redact import RedactFields
+from es_mgmt.select import PatternFilter, SelectContext
+from es_mgmt.snapshot import CreateSnapshot, DeleteSnapshots, RestoreSnapshot
 
 from es_steward import JOURNAL
 from es_steward.select import IlmFilter, OpenedFilter, SizeFilter, resolve
@@ -769,7 +769,7 @@ def journal_recent(config: str | None, limit: int = 20) -> list[dict[str, Any]]:
     Returns:
         Source dicts with at least ``workbook_id`` / ``status`` / ``timestamp``
         when present, ordered newest first. Prefers ``@timestamp`` (date-mapped
-        by ``es_tools.checkpoint``) then ``timestamp``. Re-sorts the returned
+        by ``es_mgmt.checkpoint``) then ``timestamp``. Re-sorts the returned
         page in Python so mixed fractional-second strings cannot invert order.
     """
     client = get_steward_client(config)

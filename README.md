@@ -4,7 +4,7 @@ Elasticsearch index hygiene CLI (`es-steward --help`).
 
 PyPI / console script: **`es-steward`**. Import package: **`es_steward`**. Tracking index: **`es-steward-journal`**.
 
-Depends on unpublished **`es-tools`** (path `../es-tools`) including the `[cli]` extra.
+Depends on `es-mgmt[cli]==0.1.0a1` (PyPI) including the `[cli]` extra.
 
 ## Install (dev)
 
@@ -14,7 +14,7 @@ uv sync --extra dev
 uv run es-steward --help
 ```
 
-Selectors live in `es_tools.select`. Predicates and `promote --dry-run` are S1. `redact` is hot-path `update_by_query` via `es_tools.redact.RedactFields`. Default is dry-run (`persist=False`); pass `--execute` to mutate and journal.
+Selectors live in `es_mgmt.select`. Predicates and `promote --dry-run` are S1. `redact` is hot-path `update_by_query` via `es_mgmt.redact.RedactFields`. Default is dry-run (`persist=False`); pass `--execute` to mutate and journal.
 
 ## TUI
 
