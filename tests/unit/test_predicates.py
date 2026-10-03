@@ -6,7 +6,7 @@ from datetime import UTC, datetime
 from typing import Any
 
 import pytest
-from es_tools.select import PatternFilter, SelectContext
+from es_mgmt.select import PatternFilter, SelectContext
 from pydantic import ValidationError
 
 from es_steward.select import (

@@ -9,8 +9,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from click.testing import CliRunner
-from es_tools.cluster import SetClusterRouting
-from es_tools.index import (
+from es_mgmt.cluster import SetClusterRouting
+from es_mgmt.index import (
     CloseIndices,
     Cold2FrozenIndices,
     CreateIndices,
@@ -24,7 +24,7 @@ from es_tools.index import (
     SetReplicas,
     ShrinkIndices,
 )
-from es_tools.snapshot import CreateSnapshot, DeleteSnapshots, RestoreSnapshot
+from es_mgmt.snapshot import CreateSnapshot, DeleteSnapshots, RestoreSnapshot
 
 from es_steward.cli import main
 from es_steward.services import (

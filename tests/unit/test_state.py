@@ -6,7 +6,7 @@ from fnmatch import fnmatch
 from typing import Any
 
 import pytest
-from es_tools.select import PatternFilter, SelectContext, SnapshotIndicesFilter
+from es_mgmt.select import PatternFilter, SelectContext, SnapshotIndicesFilter
 
 from es_steward.select import StateFilter, resolve
 from es_steward.select.predicates import apply_predicates

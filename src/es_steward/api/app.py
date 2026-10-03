@@ -9,7 +9,7 @@ from typing import Any, Literal, Self, TypeVar
 from uuid import uuid4
 
 from elastic_transport import ApiError, TransportError
-from es_tools.select import PatternFilter, SelectContext
+from es_mgmt.select import PatternFilter, SelectContext
 from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 

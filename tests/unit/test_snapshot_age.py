@@ -8,7 +8,7 @@ from typing import Any
 from unittest.mock import MagicMock
 
 import pytest
-from es_tools.select import SelectContext
+from es_mgmt.select import SelectContext
 
 from es_steward.select import AgeFilter, PeriodFilter
 from es_steward.select.predicates import apply_predicates

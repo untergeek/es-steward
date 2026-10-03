@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 from click.testing import CliRunner
-from es_tools.select import AliasFilter, PatternFilter
+from es_mgmt.select import AliasFilter, PatternFilter
 from pydantic import ValidationError
 
 from es_steward.cli import main

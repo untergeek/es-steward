@@ -1,4 +1,4 @@
-"""Steward selection: es_tools selectors + local predicates."""
+"""Steward selection: es_mgmt selectors + local predicates."""
 
 from .models import (
     AgeFilter,
