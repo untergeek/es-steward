@@ -17,6 +17,7 @@ from es_steward import JOURNAL
 from es_steward.select import SizeFilter, resolve
 from es_steward.services import (
     NoIndicesError,
+    alias_prefix_filters,
     get_steward_client,
     journal_recent,
     run_alias,
@@ -449,15 +450,8 @@ def create_app(*, token: str | None = None, config: str | None = None) -> FastAP
         }
 
     def _alias_run(body: AliasRequest) -> tuple[str, int, bool]:
-        add_filters = (
-            [PatternFilter(pattern_kind="prefix", value=body.add_prefix)]
-            if body.add_prefix
-            else []
-        )
-        remove_filters = (
-            [PatternFilter(pattern_kind="prefix", value=body.remove_prefix)]
-            if body.remove_prefix
-            else []
+        add_filters, remove_filters = alias_prefix_filters(
+            body.add_prefix, body.remove_prefix
         )
         status, count = run_alias(
             config,

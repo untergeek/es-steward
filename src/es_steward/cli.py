@@ -11,6 +11,7 @@ from elastic_transport import ApiError, TransportError
 from es_steward import JOURNAL, __version__
 from es_steward.services import (
     NoIndicesError,
+    alias_prefix_filters,
     run_alias,
     run_allocation,
     run_close,
@@ -485,18 +486,9 @@ def alias_cmd(
     extra_settings: str | None,
 ) -> None:
     """Add and/or remove matching indices on one alias."""
-    from es_mgmt.select import PatternFilter
-
     if not add_prefix and not remove_prefix:
         raise click.ClickException("need --add-prefix and/or --remove-prefix")
-    add_filters = (
-        [PatternFilter(pattern_kind="prefix", value=add_prefix)] if add_prefix else []
-    )
-    remove_filters = (
-        [PatternFilter(pattern_kind="prefix", value=remove_prefix)]
-        if remove_prefix
-        else []
-    )
+    add_filters, remove_filters = alias_prefix_filters(add_prefix, remove_prefix)
     parsed_extra = None
     if extra_settings:
         import json

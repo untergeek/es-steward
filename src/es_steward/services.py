@@ -1,4 +1,4 @@
-"""Shared Steward operations used by CLI, TUI, API, and MCP."""
+"""Shared Steward operations used by CLI and API."""
 
 from __future__ import annotations
 
@@ -642,6 +642,22 @@ def run_restore(
         action, names
     )
     return wb.status, len(names)
+
+
+def alias_prefix_filters(
+    add_prefix: str | None,
+    remove_prefix: str | None,
+) -> tuple[list[PatternFilter], list[PatternFilter]]:
+    """Build the add/remove prefix lists formerly duplicated in CLI and API."""
+    add_filters = (
+        [PatternFilter(pattern_kind="prefix", value=add_prefix)] if add_prefix else []
+    )
+    remove_filters = (
+        [PatternFilter(pattern_kind="prefix", value=remove_prefix)]
+        if remove_prefix
+        else []
+    )
+    return add_filters, remove_filters
 
 
 def run_alias(
