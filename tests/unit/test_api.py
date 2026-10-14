@@ -544,6 +544,20 @@ def test_alias_no_prefixes_422() -> None:
     assert res.status_code == 422
 
 
+def test_alias_no_prefixes_value_error() -> None:
+    # acceptance #2
+    res = _auth_client().post(
+        "/actions/alias", headers=_hdr(), json={"name": "last_week"}
+    )
+    assert res.status_code == 422
+    detail = res.json()["detail"]
+    assert any(
+        entry.get("type") == "value_error"
+        and "add_prefix or remove_prefix is required" in entry.get("msg", "")
+        for entry in detail
+    )
+
+
 def test_alias_extra_settings() -> None:
     with patch("es_steward.api.app.run_alias", return_value=("COMPLETED", 1)) as run:
         res = _auth_client().post(
